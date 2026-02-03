@@ -1,65 +1,59 @@
-import Image from "next/image";
+import Footer from '@/components/Footer';
+import ProjectsSection from '@/components/ProjectsSection';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-white dark:bg-black selection:bg-zinc-200 dark:selection:bg-zinc-800">
+
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center justify-center px-6 pt-20 pb-10">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+
+            {/* Column 1: Photo (Left on Desktop, Top on Mobile) */}
+            <div className="w-full md:w-1/2 flex justify-center md:justify-start order-1">
+              <div className="relative w-64 h-64 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px]">
+                {/* Aesthetic Image Container with subtle border/shadow */}
+                <div className="absolute inset-0 rounded-3xl rotate-3 bg-zinc-100 dark:bg-zinc-800 -z-10 transition-transform duration-500 hover:rotate-6"></div>
+                <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&q=80"
+                    alt="Maxime AIT ADDA"
+                    className="h-full w-full object-cover"
+                  />
+                  {/* Note: Replace src with "/images/maxime.jpg" when you have the file */}
+                </div>
+              </div>
+            </div>
+
+            {/* Column 2: Text (Right on Desktop, Bottom on Mobile) */}
+            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-6 order-2">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-zinc-900 dark:text-white leading-[0.9]">
+                Product & <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 to-zinc-900 dark:from-zinc-400 dark:to-white">
+                  Growth Manager
+                </span>
+              </h1>
+              <h2 className="text-xl md:text-2xl font-medium text-zinc-500 dark:text-zinc-400 tracking-widest uppercase">
+                Maxime AIT ADDA
+              </h2>
+              <div className="pt-8">
+                <button className="px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold tracking-wide hover:opacity-90 transition-opacity">
+                  Contact Me
+                </button>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Projects Section */}
+      <ProjectsSection />
+
+      {/* Footer */}
+      <Footer />
+    </main>
   );
 }

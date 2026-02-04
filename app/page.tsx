@@ -17,12 +17,14 @@ export default function Home() {
                 {/* Aesthetic Image Container with subtle border/shadow */}
                 <div className="absolute inset-0 rounded-3xl rotate-3 bg-zinc-100 dark:bg-zinc-800 -z-10 transition-transform duration-500 hover:rotate-6"></div>
                 <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800">
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&q=80"
+                  <Image
+                    src="/images/maxime-aa-pro.png"
                     alt="Maxime AIT ADDA"
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
+                    priority
                   />
-                  {/* Note: Replace src with "/images/maxime.jpg" when you have the file */}
+
                 </div>
               </div>
             </div>

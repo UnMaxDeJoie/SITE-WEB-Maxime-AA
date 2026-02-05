@@ -6,7 +6,7 @@ export async function GET() {
     try {
         await dbConnect();
 
-        const projects = await Project.find({}).sort({ createdAt: -1 }); // Newest first
+        const projects = await Project.find({}).sort({ createdAt: -1 });
 
         return NextResponse.json({ success: true, data: projects });
     } catch (error) {

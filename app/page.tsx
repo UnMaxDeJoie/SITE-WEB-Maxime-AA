@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import ContactMenu from '@/components/ContactMenu';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                   />
 
                 </div>
@@ -40,10 +42,8 @@ export default function Home() {
               <h2 className="text-xl md:text-2xl font-medium text-zinc-500 dark:text-zinc-400 tracking-widest uppercase">
                 Maxime AIT ADDA
               </h2>
-              <div className="pt-8">
-                <button className="px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold tracking-wide hover:opacity-90 transition-opacity">
-                  Contact Me
-                </button>
+              <div className="pt-8 w-full md:w-auto flex justify-center md:justify-start">
+                <ContactMenu />
               </div>
             </div>
 

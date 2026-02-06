@@ -8,8 +8,10 @@ export const revalidate = 60;
 
 async function getProjects() {
     try {
-        await dbConnect();
-        const projects = await Project.find({}).sort({ createdAt: -1 }).lean();
+        const projects = await Project.find({})
+            .select('title shortDescription imageUrl category linkType externalLink slug createdAt')
+            .sort({ createdAt: -1 })
+            .lean();
 
         return JSON.parse(JSON.stringify(projects));
     } catch (error) {

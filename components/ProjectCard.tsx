@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
 
-interface ProjectCardProps {
+export interface ProjectData {
     title: string;
     shortDescription: string;
     imageUrl: string;
@@ -12,14 +12,19 @@ interface ProjectCardProps {
     slug?: string;
 }
 
-export default function ProjectCard({
-    title,
-    shortDescription,
-    imageUrl,
-    linkType,
-    externalLink,
-    slug,
-}: ProjectCardProps) {
+interface ProjectCardProps {
+    project: ProjectData;
+}
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+    const {
+        title,
+        shortDescription,
+        imageUrl,
+        linkType,
+        externalLink,
+        slug,
+    } = project;
     const href = linkType === 'internal' && slug ? `/projects/${slug}` : (externalLink || '#');
     const target = linkType === 'external' ? '_blank' : '_self';
 

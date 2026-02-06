@@ -8,20 +8,10 @@ if (!MONGODB_URI) {
   );
 }
 
-
-interface MongooseCache {
-  conn: mongoose.Connection | null;
-  promise: Promise<mongoose.Connection> | null;
-}
-
-declare global {
-  var mongoose: MongooseCache;
-}
-
-let cached = global.mongoose;
+let cached = (global as any).mongoose;
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+  cached = (global as any).mongoose = { conn: null, promise: null };
 }
 
 async function dbConnect() {
@@ -30,12 +20,14 @@ async function dbConnect() {
   }
 
   if (!cached.promise) {
+    mongoose.set('bufferCommands', false);
+
     const opts = {
       bufferCommands: false,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
-      return mongoose.connection;
+      return mongoose;
     });
   }
 

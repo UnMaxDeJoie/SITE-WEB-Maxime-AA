@@ -2,6 +2,7 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import ContactMenu from '@/components/ContactMenu';
+import BrandSlider from '@/components/BrandSlider';
 
 export default function Home() {
   return (
@@ -50,6 +51,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BrandSlider />
 
 
       <Footer />

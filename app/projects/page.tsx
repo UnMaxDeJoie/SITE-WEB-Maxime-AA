@@ -15,7 +15,8 @@ async function getProjects() {
 
         return JSON.parse(JSON.stringify(projects));
     } catch (error) {
-        console.error("Error fetching projects in production:", error);
+        console.error("CRITICAL ERROR FETCHING PROJECTS:");
+        console.error(error);
         return [];
     }
 }

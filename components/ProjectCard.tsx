@@ -28,11 +28,11 @@ export default function ProjectCard({
             href={href}
             target={target}
             rel={linkType === 'external' ? "noopener noreferrer" : undefined}
-            className="group block h-full min-w-[300px] md:min-w-[400px] snap-center"
+            className="group block h-full w-[260px] md:w-[320px] flex-none snap-center"
         >
             <div className="relative h-full overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1">
 
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
                     <Image
                         src={imageUrl}
                         alt={title}

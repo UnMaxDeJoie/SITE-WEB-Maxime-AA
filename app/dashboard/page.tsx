@@ -49,6 +49,21 @@ export default async function DashboardPage() {
             <div className="space-y-16">
                 <section>
                     <h2 className="text-xl font-semibold mb-6 text-zinc-800 dark:text-zinc-200 flex items-center gap-3">
+                        <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
+                        Projets à tester ({projectsToTest.length})
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {projectsToTest.map((project: any) => (
+                            <DashboardCard key={project._id} project={project} />
+                        ))}
+                        {projectsToTest.length === 0 && (
+                            <p className="text-zinc-500 italic col-span-full">Aucun projet à tester.</p>
+                        )}
+                    </div>
+                </section>
+
+                <section>
+                    <h2 className="text-xl font-semibold mb-6 text-zinc-800 dark:text-zinc-200 flex items-center gap-3">
                         <span className="w-3 h-3 bg-purple-600 rounded-full"></span>
                         Projets à voir ({projectsToSee.length})
                     </h2>
@@ -69,7 +84,7 @@ export default async function DashboardPage() {
 function DashboardCard({ project }: { project: any }) {
     return (
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-48 relative overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+            <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <Image
                     src={project.imageUrl}
                     alt={project.title}

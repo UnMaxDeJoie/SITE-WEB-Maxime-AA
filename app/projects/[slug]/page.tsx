@@ -6,8 +6,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 
-export const revalidate = 60; // Revalidate every minute
-// export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 async function getProject(slug: string) {
     await dbConnect();

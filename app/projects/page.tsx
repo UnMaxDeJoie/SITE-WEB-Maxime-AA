@@ -4,8 +4,7 @@ import ProjectCard from '@/components/ProjectCard';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
 
-export const revalidate = 60; // Revalidate every minute
-// export const dynamic = 'force-dynamic'; // Removing this to allow static generation with revalidation
+export const revalidate = 60;
 
 async function getProjects() {
     await dbConnect();
@@ -30,20 +29,20 @@ export default async function ProjectsPage() {
     return (
         <main className="min-h-screen bg-white dark:bg-black selection:bg-zinc-200 dark:selection:bg-zinc-800">
             <AnimatedBackground />
-            <div className="pt-32 pb-20 px-6 container mx-auto">
-                <h1 className="text-4xl md:text-5xl font-extrabold mb-16 text-zinc-900 dark:text-white tracking-tighter">
+            <div className="pt-24 pb-20 px-6 container mx-auto">
+                <h1 className="text-4xl md:text-5xl font-extrabold mb-10 text-zinc-900 dark:text-white tracking-tighter">
                     Tous mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Projets</span>
                 </h1>
 
 
-                <section className="mb-20">
-                    <h2 className="text-2xl font-bold mb-8 text-zinc-800 dark:text-zinc-200 flex items-center gap-3">
+                <section className="mb-8">
+                    <h2 className="text-2xl font-bold mb-4 text-zinc-800 dark:text-zinc-200 flex items-center gap-3">
                         <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
                         Projets à tester
                     </h2>
 
                     {projectsToTest.length > 0 ? (
-                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 scrollbar-hide">
+                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 py-10 -mx-6 px-6 scrollbar-hide">
                             {projectsToTest.map((project: any) => (
                                 <ProjectCard
                                     key={String(project._id)}
@@ -64,13 +63,13 @@ export default async function ProjectsPage() {
 
 
                 <section>
-                    <h2 className="text-2xl font-bold mb-8 text-zinc-800 dark:text-zinc-200 flex items-center gap-3">
+                    <h2 className="text-2xl font-bold mb-4 text-zinc-800 dark:text-zinc-200 flex items-center gap-3">
                         <span className="w-8 h-1 bg-purple-600 rounded-full"></span>
                         Projets à voir
                     </h2>
 
                     {projectsToSee.length > 0 ? (
-                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 scrollbar-hide">
+                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 py-10 -mx-6 px-6 scrollbar-hide">
                             {projectsToSee.map((project: any) => (
                                 <ProjectCard
                                     key={String(project._id)}

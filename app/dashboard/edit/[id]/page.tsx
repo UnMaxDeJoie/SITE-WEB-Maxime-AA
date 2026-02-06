@@ -43,11 +43,10 @@ export default async function EditProjectPage({ params }: { params: Promise<{ id
                 <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">Modifier le projet</h1>
             </div>
 
-        <// @ts - ignore - Server Action binding typing issue
-    ProjectForm
-    action = { updateAction }
-    initialData = { project }
-        />
+            <ProjectForm
+                action={updateAction}
+                initialData={project}
+            />
         </div >
     );
 }

@@ -7,8 +7,6 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useActionState } from 'react';
 
 export default function CreateProjectPage() {
-    // using useActionState (new useFormState) for error handling if we wanted
-    // passing action directly for now as simple implementation
     const [state, action] = useActionState(createProject, null);
 
     return (

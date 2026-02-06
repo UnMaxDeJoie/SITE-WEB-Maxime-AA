@@ -9,7 +9,7 @@ export async function encrypt(payload: any) {
     return await new SignJWT(payload)
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()
-        .setExpirationTime('24h') // Session lasts 24 hours
+        .setExpirationTime('24h')
         .sign(key);
 }
 
@@ -24,18 +24,13 @@ export async function login(formData: FormData) {
     const email = formData.get('email');
     const password = formData.get('password');
 
-    // Hardcoded credentials as requested
     if (email === 'maxait93@gmail.com' && password === '@PasswordAdmin1') {
-        // Create the session
         const user = { email: 'maxait93@gmail.com', name: 'Admin' };
-        const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 1 day
+        const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
         const session = await encrypt({ user, expires });
 
-        // Save the session in a cookie
         (await cookies()).set('session', session, { expires, httpOnly: true });
     } else {
-        // Return error? For now we just don't set cookie.
-        // In a real app we'd throw or return specific error.
         throw new Error('Identifiants incorrects');
     }
 }
@@ -58,7 +53,6 @@ export async function updateSession(request: NextRequest) {
     const session = request.cookies.get('session')?.value;
     if (!session) return;
 
-    // Refresh the session so it doesn't expire
     const parsed = await decrypt(session);
     parsed.expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
     const res = NextResponse.next();

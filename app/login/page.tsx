@@ -4,7 +4,6 @@ import { useActionState } from 'react';
 import { loginAction } from './actions';
 
 export default function LoginPage() {
-    // Login page for admin access
     const [state, action, isPending] = useActionState(loginAction, null);
 
     return (

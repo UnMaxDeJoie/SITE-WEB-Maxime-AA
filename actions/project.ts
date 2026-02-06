@@ -6,7 +6,6 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
 
-// Middleware should protect routes, but good to check session here too for mutations
 async function checkAuth() {
     const session = await getSession();
     if (!session) {
@@ -19,14 +18,14 @@ export async function createProject(prevState: any, formData: FormData) {
 
     try {
         const projectData = {
-            title: formData.get('title'),
-            shortDescription: formData.get('shortDescription'),
-            imageUrl: formData.get('imageUrl'),
-            category: formData.get('category'),
-            linkType: formData.get('linkType'),
-            externalLink: formData.get('externalLink'),
-            slug: formData.get('slug'),
-            longDescription: formData.get('longDescription'),
+            title: formData.get('title') as string,
+            shortDescription: formData.get('shortDescription') as string,
+            imageUrl: formData.get('imageUrl') as string,
+            category: formData.get('category') as string,
+            linkType: formData.get('linkType') as string,
+            externalLink: formData.get('externalLink') as string,
+            slug: formData.get('slug') as string,
+            longDescription: formData.get('longDescription') as string,
         };
 
         await dbConnect();
@@ -45,14 +44,14 @@ export async function updateProject(id: string, prevState: any, formData: FormDa
 
     try {
         const projectData = {
-            title: formData.get('title'),
-            shortDescription: formData.get('shortDescription'),
-            imageUrl: formData.get('imageUrl'),
-            category: formData.get('category'),
-            linkType: formData.get('linkType'),
-            externalLink: formData.get('externalLink'),
-            slug: formData.get('slug'),
-            longDescription: formData.get('longDescription'),
+            title: formData.get('title') as string,
+            shortDescription: formData.get('shortDescription') as string,
+            imageUrl: formData.get('imageUrl') as string,
+            category: formData.get('category') as string,
+            linkType: formData.get('linkType') as string,
+            externalLink: formData.get('externalLink') as string,
+            slug: formData.get('slug') as string,
+            longDescription: formData.get('longDescription') as string,
         };
 
         await dbConnect();
@@ -76,6 +75,5 @@ export async function deleteProject(id: string) {
         revalidatePath('/projects');
     } catch (error: any) {
         console.error('Failed to delete project:', error);
-        // Ideally we'd return an error state, but for a simple delete button action we might just log
     }
 }

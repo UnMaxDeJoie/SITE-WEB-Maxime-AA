@@ -30,7 +30,7 @@ export default function ProjectCard({
             rel={linkType === 'external' ? "noopener noreferrer" : undefined}
             className="group block h-full min-w-[300px] md:min-w-[400px] snap-center"
         >
-            <div className="relative h-full overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-2">
+            <div className="relative h-full overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1">
 
                 <div className="relative h-64 overflow-hidden">
                     <Image

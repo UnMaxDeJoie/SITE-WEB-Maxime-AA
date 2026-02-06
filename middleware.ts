@@ -17,7 +17,13 @@ export async function middleware(request: NextRequest) {
         }
     }
 
-    return await updateSession(request);
+    const session = request.cookies.get('session')?.value;
+
+    if (session) {
+        return await updateSession(request);
+    }
+
+    return NextResponse.next();
 }
 
 export const config = {

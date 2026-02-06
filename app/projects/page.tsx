@@ -7,17 +7,15 @@ import AnimatedBackground from '@/components/AnimatedBackground';
 export const revalidate = 60;
 
 async function getProjects() {
-    await dbConnect();
+    try {
+        await dbConnect();
+        const projects = await Project.find({}).sort({ createdAt: -1 }).lean();
 
-    const projects = await Project.find({}).sort({ createdAt: -1 }).lean();
-
-
-    return projects.map(p => ({
-        ...p,
-        _id: p._id.toString(),
-        createdAt: p.createdAt?.toString(),
-        updatedAt: p.updatedAt?.toString(),
-    }));
+        return JSON.parse(JSON.stringify(projects));
+    } catch (error) {
+        console.error("Error fetching projects in production:", error);
+        return [];
+    }
 }
 
 export default async function ProjectsPage() {

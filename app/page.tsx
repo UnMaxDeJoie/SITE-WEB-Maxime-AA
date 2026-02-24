@@ -3,6 +3,7 @@ import Image from 'next/image';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import ContactMenu from '@/components/ContactMenu';
 import BrandSlider from '@/components/BrandSlider';
+import AstroSection from '@/components/AstroSection';
 
 export default function Home() {
   return (
@@ -50,6 +51,26 @@ export default function Home() {
 
           </div>
         </div>
+      </section>
+
+      {/* Astro Cosmo Game Section */}
+      <section className="py-16 px-4 flex flex-col items-center gap-6">
+        <h2
+          className="text-2xl md:text-3xl font-extrabold tracking-widest uppercase"
+          style={{
+            fontFamily: '"Courier New", monospace',
+            background: 'linear-gradient(135deg, #0af, #06f)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: 'none',
+          }}
+        >
+          🚀 Mini-Jeu
+        </h2>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 tracking-wide">
+          Esquive les obstacles dans l&apos;espace infini !
+        </p>
+        <AstroSection />
       </section>
 
       <BrandSlider />
